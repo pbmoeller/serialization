@@ -14,6 +14,12 @@ add_executable(serialization-test
     "v1.0/test_service_2.cpp"
 )
 
+SET(GCC_COVERAGE_COMPILE_FLAGS "-fprofile-arcs -ftest-coverage")
+SET(GCC_COVERAGE_LINK_FLAGS    "-lgcov")
+
+SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
+
 target_include_directories(serialization-test
     PRIVATE
         "${PROJECT_SOURCE_DIR}/include"
